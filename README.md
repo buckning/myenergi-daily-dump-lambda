@@ -18,3 +18,7 @@ for up to 7 days.
 Each day a scheduled cron job is triggered at 6AM by cloudwatch events to pull the data for the previous day.
 There may be cases where data is missing from the dataset. If this is the case, a reattempt is scheduled in SQS to retry
 for up to 7 days.
+
+# Create SQS Queue for priming the DB from the myenergi APIs
+Queue type: fifo
+Queue name: raw-data-catch-up-queue.fifo

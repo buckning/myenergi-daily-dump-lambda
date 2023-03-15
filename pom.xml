@@ -28,6 +28,11 @@
             <artifactId>aws-java-sdk-dynamodb</artifactId>
             <version>1.12.166</version>
         </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-sqs</artifactId>
+            <version>1.12.146</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
