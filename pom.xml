@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>db-dump-lambda</module>
+        <module>zappi-history-dump-lambda</module>
         <module>myenergi-client</module>
     </modules>
 

@@ -1,4 +1,4 @@
-com.amcglynn.myenergi stores all energy usage of your solar, input and output to the grid, consumption. There are some APIs to 
+myenergi stores all energy usage of your solar, input and output to the grid, consumption. There are some APIs to
 retrieve this information but there could be additional functions that would be useful.
 
 The purpose of this project is to extract this information, back up the raw data in another DB and have APIs to retrieve
@@ -18,7 +18,3 @@ for up to 7 days.
 Each day a scheduled cron job is triggered at 6AM by cloudwatch events to pull the data for the previous day.
 There may be cases where data is missing from the dataset. If this is the case, a reattempt is scheduled in SQS to retry
 for up to 7 days.
-
-# Create SQS Queue for priming the DB from the com.amcglynn.myenergi APIs
-Queue type: fifo
-Queue name: raw-data-catch-up-queue.fifo
