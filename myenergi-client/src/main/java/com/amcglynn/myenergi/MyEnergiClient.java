@@ -35,6 +35,7 @@ import java.net.URI;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 
 public class MyEnergiClient {
 
@@ -142,10 +143,18 @@ public class MyEnergiClient {
     }
 
     public ZappiDayHistory getZappiHistory(LocalDate localDate) {
+        return getZappiHistoryRaw(localDate).getKey();
+    }
+
+    public Map.Entry<ZappiDayHistory, String> getZappiHistoryRaw(LocalDate localDate) {
         var response = getRequest("/cgi-jday-Z" + serialNumber + "-" + localDate.getYear() +
                 "-" + localDate.getMonthValue() + "-" + localDate.getDayOfMonth());
+        System.out.println(response);
         try {
-            return new ObjectMapper().readValue(response, new TypeReference<>(){});
+            // the object mapper is used to validate the response. If it doesn't match the expected output, we throw
+            // an exception
+            var history = new ObjectMapper().readValue(response, new TypeReference<ZappiDayHistory>(){});
+            return Map.entry(history, response);
         } catch (JsonProcessingException e) {
             throw new InvalidResponseFormatException();
         }
