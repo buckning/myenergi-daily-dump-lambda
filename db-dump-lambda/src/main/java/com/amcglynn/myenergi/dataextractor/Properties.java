@@ -24,5 +24,9 @@ public class Properties {
         return Boolean.parseBoolean(System.getenv("disabled"));
     }
 
+    public static String getDataDumpSqsUrl() {
+        return System.getenv("dataDumpSqsUrl");
+    }
+
     private Properties() { }
 }

@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>lambda</module>
+        <module>db-dump-lambda</module>
         <module>myenergi-client</module>
     </modules>
 
