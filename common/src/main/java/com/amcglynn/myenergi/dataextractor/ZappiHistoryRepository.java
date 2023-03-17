@@ -15,10 +15,12 @@ import java.util.Optional;
 public class ZappiHistoryRepository {
 
     private final AmazonDynamoDB dbClient;
+    private final String tableName;
 
     public ZappiHistoryRepository() {
         dbClient = AmazonDynamoDBClientBuilder.standard()
                 .withRegion(Properties.getRegion()).build();
+        tableName = Properties.getTableName();
     }
 
     public void writeData(LocalDate date, String rawData, int sampleSize) {
@@ -28,14 +30,14 @@ public class ZappiHistoryRepository {
         item.put("data", new AttributeValue(rawData));
         item.put("samples", new AttributeValue().withN(Integer.toString(sampleSize)));
         var request = new PutItemRequest()
-                .withTableName(Properties.getTableName())
+                .withTableName(tableName)
                 .withItem(item);
         dbClient.putItem(request);
     }
 
     public Optional<String> readData(String date) {
         var request = new GetItemRequest()
-                .withTableName(Properties.getTableName())
+                .withTableName(tableName)
                 .addKeyEntry("date", new AttributeValue(date));
 
         var result = dbClient.getItem(request);

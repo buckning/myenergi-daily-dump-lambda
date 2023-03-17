@@ -12,6 +12,8 @@
     <modules>
         <module>zappi-history-dump-lambda</module>
         <module>myenergi-client</module>
+        <module>zappi-nightly-data-dump</module>
+        <module>common</module>
     </modules>
 
     <properties>

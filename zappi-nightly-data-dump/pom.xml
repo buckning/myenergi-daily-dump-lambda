@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>zappi-history-dump-lambda</artifactId>
+    <artifactId>zappi-nightly-data-dump</artifactId>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -39,8 +39,8 @@
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-sqs</artifactId>
-            <version>1.12.146</version>
+            <artifactId>aws-java-sdk-dynamodb</artifactId>
+            <version>1.12.166</version>
         </dependency>
     </dependencies>
     <build>

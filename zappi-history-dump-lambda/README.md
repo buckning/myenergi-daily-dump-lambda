@@ -42,3 +42,10 @@ This can be done by running a test in the Lambda console and selecting `sqs-rece
 The process will keep running every minute, writing each day at a time, and will execute until the current day is
 reached. Note that this process will take longer depending on the start time. If there is a timespan of 1 year, then
 the data dump will take 6 hours to complete.
+
+The following environment variables are required:
+* dbRegion
+* tableName
+* myEnergiHubApiKey
+* myEnergiHubSerialNumber
+* dataDumpSqsUrl

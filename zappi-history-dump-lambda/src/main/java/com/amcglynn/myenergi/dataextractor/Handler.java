@@ -7,17 +7,14 @@ import com.amcglynn.myenergi.MyEnergiClient;
 
 public class Handler implements RequestHandler<SQSEvent, Void> {
 
-    private final MyEnergiClient myEnergiClient;
-    private final ZappiHistoryRepository historyRepository;
-    private final SqsMessageClient sqsMessageClient;
     private final boolean disabled;
-    private HistoricZappiDataDumpService service;
+    private final HistoricZappiDataDumpService service;
 
     public Handler() {
         disabled = Properties.isDisabled();
-        myEnergiClient = new MyEnergiClient(Properties.getSerialNumber(), Properties.getApiKey());
-        historyRepository = new ZappiHistoryRepository();
-        sqsMessageClient = new SqsMessageClient();
+        var myEnergiClient = new MyEnergiClient(Properties.getSerialNumber(), Properties.getApiKey());
+        var historyRepository = new ZappiHistoryRepository();
+        var sqsMessageClient = new SqsMessageClient();
         service = new HistoricZappiDataDumpService(myEnergiClient, historyRepository, sqsMessageClient);
     }
 

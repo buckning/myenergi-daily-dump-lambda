@@ -149,7 +149,6 @@ public class MyEnergiClient {
     public Map.Entry<ZappiDayHistory, String> getZappiHistoryRaw(LocalDate localDate) {
         var response = getRequest("/cgi-jday-Z" + serialNumber + "-" + localDate.getYear() +
                 "-" + localDate.getMonthValue() + "-" + localDate.getDayOfMonth());
-        System.out.println(response);
         try {
             // the object mapper is used to validate the response. If it doesn't match the expected output, we throw
             // an exception
